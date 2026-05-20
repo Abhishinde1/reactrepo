@@ -25,6 +25,12 @@ pipeline {
             bat "npm run build"
         }
     }
+    stage("Deployment"){
+        steps {
+            bat "del /q /s C:\\inetpub\\wwwroot\\react\\*"
+            bat "xcopy /E /I /Y build\\* c:\\inetpub\\wwwroot\\react\\"
+        }
+    }
 
   }
 }
